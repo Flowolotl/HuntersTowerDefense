@@ -1,7 +1,6 @@
 local SS = game:GetService("ServerStorage")
 local Rep = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
-print("rojo test")
 
 local events = Rep:WaitForChild("Events")
 
