@@ -44,6 +44,9 @@ function runner.Spawn(name, quantity, map)
 				newRunner:Destroy()
 			end)
 
+            if newRunner.Config.Boss.Value then
+                require(script.Boss).InitBoss(newRunner, map)
+            end
 			coroutine.wrap(runner.Move)(newRunner, map)
 		end
 

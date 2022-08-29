@@ -118,6 +118,7 @@ function round.GetWave(wave, map)
 	runner.Spawn("Zombie", 2, map)
 	runner.Spawn("FastZombie", 2, map)
 	runner.Spawn("SlowZombie", 2, map)
+	runner.Spawn("GiantZombie", 1, map)
 end
 
 return round
