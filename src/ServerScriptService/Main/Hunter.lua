@@ -72,7 +72,7 @@ end
 function hunter.Attack(newHunter, player)
 	local config = newHunter.Config
 	local target = hunter.FindTarget(newHunter, config.Range.Value, config.TargetMode.Value)
-	if target then
+	if target and not config.Stunned then
 		local targetCFrame = CFrame.lookAt(newHunter.HumanoidRootPart.Position, target.HumanoidRootPart.Position)
 		newHunter.HumanoidRootPart.BodyGyro.CFrame = targetCFrame
 
