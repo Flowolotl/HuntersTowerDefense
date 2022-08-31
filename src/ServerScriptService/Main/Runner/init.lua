@@ -1,6 +1,6 @@
 local SS = game:GetService("ServerStorage")
 local PS = game:GetService("PhysicsService")
-
+local boss = require(script.Boss)
 local runner = {}
 
 function runner.Move(runner, map)
@@ -45,7 +45,7 @@ function runner.Spawn(name, quantity, map)
 			end)
 
             if newRunner.Config.Boss.Value then
-                require(script.Boss).InitBoss(newRunner, map)
+                boss.InitBoss(newRunner, map)
             end
 			coroutine.wrap(runner.Move)(newRunner, map)
 		end
