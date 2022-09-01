@@ -3,6 +3,8 @@ local Players = game:GetService("Players")
 local runner = require(script.Runner)
 local hunter = require(script.Hunter)
 local round = require(script.Round)
+local globals = require(script.Globals)
+globals.Init()
 
 local minPlayers = 1
 

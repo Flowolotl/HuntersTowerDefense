@@ -24,10 +24,14 @@ function boss.TargetsInRange(runner, range)
 end
 
 function boss.Ability(runner, map)
-   local target = boss.TargetExists(runner,20)
-   if target then
+   local targetExists = boss.TargetExists(runner,10)
+   if targetExists then
       print("ability")
-      target.Config.Stunned.Value = true
+      print(boss.TargetsInRange(runner, 20))
+      for i, target in ipairs(boss.TargetsInRange(runner, 20)) do
+         print(target.Name .. " stunned")
+         target.Config.Stunned.Value = true
+      end
       task.wait(10)
    end
 

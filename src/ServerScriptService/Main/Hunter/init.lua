@@ -69,10 +69,30 @@ function hunter.FindTarget(newHunter, range, mode)
 	return bestTarget
 end
 
+function hunter.Ability(hunter, player)
+    local config = hunter.Config
+    for i, target in ipairs(config.Abilities) do
+        local module = require(script:FindFirstChild(target.Value))
+        module.Init(hunter, player)
+    end
+end
+
+function hunter.ResetStunned(hunter)
+    task.wait(3)
+    print("Resetting")
+    hunter.Config.Stunned.Value = false
+end
+
 function hunter.Attack(newHunter, player)
 	local config = newHunter.Config
+    config.Stunned.Changed:Connect(function()
+        if config.Stunned.Value then
+            print("changed")
+            hunter.ResetStunned(newHunter)
+        end
+    end)
 	local target = hunter.FindTarget(newHunter, config.Range.Value, config.TargetMode.Value)
-	if target and not config.Stunned then
+	if target and not config.Stunned.Value then
 		local targetCFrame = CFrame.lookAt(newHunter.HumanoidRootPart.Position, target.HumanoidRootPart.Position)
 		newHunter.HumanoidRootPart.BodyGyro.CFrame = targetCFrame
 
